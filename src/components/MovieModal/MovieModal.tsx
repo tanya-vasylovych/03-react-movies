@@ -1,14 +1,14 @@
-import css from "./MovieModal.module.css";
-import { createPortal } from "react-dom";
-import type { Movie } from "../../types/movie";
-import { useEffect } from "react";
+import css from './MovieModal.module.css';
+import { createPortal } from 'react-dom';
+import type { Movie } from '../../types/movie';
+import { useEffect } from 'react';
 
-interface ModalProps {
+interface MovieModalProps {
   movie: Movie;
   onClose: () => void;
 }
 
-const MovieModal = ({ movie, onClose }: ModalProps) => {
+const MovieModal = ({ movie, onClose }: MovieModalProps) => {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -17,15 +17,15 @@ const MovieModal = ({ movie, onClose }: ModalProps) => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         onClose();
       }
     };
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 
@@ -45,7 +45,7 @@ const MovieModal = ({ movie, onClose }: ModalProps) => {
           &times;
         </button>
         <img
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           alt={movie.title}
           className={css.image}
         />

@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { fetchMovies } from "../../services/movieService";
-import type { Movie } from "../../types/movie";
-import SearchBar from "../SearchBar/SearchBar";
-import css from "./App.module.css";
-import MovieGrid from "../MovieGrid/MovieGrid";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import Loader from "../Loader/Loader";
-import { toast, Toaster } from "react-hot-toast";
-import MovieModal from "../MovieModal/MovieModal";
+import { useEffect, useState } from 'react';
+import { fetchMovies } from '../../services/movieService';
+import type { Movie } from '../../types/movie';
+import SearchBar from '../SearchBar/SearchBar';
+import css from './App.module.css';
+import MovieGrid from '../MovieGrid/MovieGrid';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Loader from '../Loader/Loader';
+import { toast, Toaster } from 'react-hot-toast';
+import MovieModal from '../MovieModal/MovieModal';
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -18,10 +18,10 @@ function App() {
 
   useEffect(() => {
     if (isEmpty) {
-      toast.error("No movies found for your request.");
+      toast.error('No movies found for your request.');
     }
   }, [isEmpty]);
-  const handleSubmit = async (value: string) => {
+  const onSubmit = async (value: string) => {
     setIsEmpty(false);
     setMovies([]);
     setIsLoading(true);
@@ -48,11 +48,11 @@ function App() {
 
   return (
     <div className={css.app}>
-      <SearchBar handleSubmit={handleSubmit} />
+      <SearchBar onSubmit={onSubmit} />
       {movies.length > 0 && (
         <MovieGrid movies={movies} onSelect={handleSelect} />
       )}
-      {isEmpty && <Toaster position="top-center" reverseOrder={false} />}
+      <Toaster position="top-center" reverseOrder={false} />
       {isError && <ErrorMessage />}
       {selectedMovie && <MovieModal onClose={onClose} movie={selectedMovie} />}
       {isLoading && <Loader />}
