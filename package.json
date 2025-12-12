@@ -13,8 +13,10 @@
     "axios": "^1.11.0",
     "modern-normalize": "^3.0.1",
     "react": "^19.1.1",
+    "react-content-loader": "^7.1.1",
     "react-dom": "^19.1.1",
-    "react-hot-toast": "^2.5.2"
+    "react-hot-toast": "^2.5.2",
+    "react-loader-spinner": "^8.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",

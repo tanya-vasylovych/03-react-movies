@@ -1,7 +1,7 @@
-import css from "./Loader.module.css";
+import { ThreeDots } from 'react-loader-spinner';
 
 const Loader = () => {
-  return <p className={css.text}>Loading movies, please wait...</p>;
+  return <ThreeDots color="#00BFFF" height={80} width={80} />;
 };
 
 export default Loader;
